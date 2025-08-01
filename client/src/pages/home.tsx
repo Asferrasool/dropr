@@ -10,11 +10,13 @@ import ActiveOrders from "../components/active-orders";
 import PopularItems from "../components/popular-items";
 import NetworkStatus from "../components/network-status";
 import NotificationsModal from "../components/notifications-modal";
+import LocationModal from "../components/location-modal";
 
 export default function Home() {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState("Chak 123, Punjab");
   const [showNotifications, setShowNotifications] = useState(false);
+  const [showLocationModal, setShowLocationModal] = useState(false);
   const [, navigate] = useLocation();
 
   // Dummy notifications data
@@ -96,10 +98,13 @@ export default function Home() {
         </div>
         
         {/* Location Banner */}
-        <div className="mt-3 flex items-center space-x-2 bg-white/20 rounded-lg p-2">
+        <div 
+          className="mt-3 flex items-center space-x-2 bg-white/20 rounded-lg p-2 cursor-pointer hover:bg-white/30 transition-colors"
+          onClick={() => setShowLocationModal(true)}
+        >
           <MapPin className="text-yellow-accent h-4 w-4" />
-          <span className="text-sm">Delivering to: <span className="font-semibold">{selectedLocation}</span></span>
-          <Button variant="ghost" size="sm" className="ml-auto p-0 h-auto text-white">
+          <span className="text-sm flex-1">Delivering to: <span className="font-semibold">{selectedLocation}</span></span>
+          <Button variant="ghost" size="sm" className="p-0 h-auto text-white">
             <ChevronDown className="h-3 w-3" />
           </Button>
         </div>
@@ -153,6 +158,14 @@ export default function Home() {
         isOpen={showNotifications}
         onClose={() => setShowNotifications(false)}
         notifications={notifications}
+      />
+
+      {/* Location Modal */}
+      <LocationModal 
+        isOpen={showLocationModal}
+        onClose={() => setShowLocationModal(false)}
+        selectedLocation={selectedLocation}
+        onLocationSelect={setSelectedLocation}
       />
 
       {/* Network Status */}
