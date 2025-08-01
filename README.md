@@ -1,4 +1,4 @@
-# DeliverPak - Rural Pakistan Delivery Service
+# Dropr - Get Your Goods!
 
 A mobile-first delivery application designed for rural Pakistani areas, featuring AI-powered chat ordering for food, medicines, and groceries. Built with React, Node.js, and DeepSeek AI integration.
 
@@ -36,7 +36,7 @@ Before you begin, ensure you have the following installed:
 
 ```bash
 git clone <your-repository-url>
-cd deliverpak
+cd dropr
 ```
 
 ### 2. Install Dependencies
@@ -100,7 +100,7 @@ This command will:
 ## Project Structure
 
 ```
-deliverpak/
+dropr/
 ├── client/                 # Frontend React application
 │   ├── src/
 │   │   ├── components/     # Reusable UI components
@@ -159,7 +159,7 @@ deliverpak/
 The app uses in-memory storage by default for development. To use PostgreSQL:
 
 1. Install PostgreSQL locally
-2. Create a database named `deliverpak`
+2. Create a database named `dropr`
 3. Update the `DATABASE_URL` in your `.env` file
 4. Run migrations: `npm run db:migrate`
 

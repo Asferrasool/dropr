@@ -1,6 +1,6 @@
 # Overview
 
-DeliverPak is a mobile-first delivery service application designed for rural Pakistani areas. The application facilitates ordering of food, medicine, and groceries through an AI-powered chat interface, with a focus on serving remote communities with limited connectivity. The system features a React frontend with Node.js/Express backend, PostgreSQL database with Drizzle ORM, and OpenAI integration for intelligent order processing.
+Dropr is a mobile-first delivery service application designed for rural Pakistani areas. The application facilitates ordering of food, medicine, and groceries through an AI-powered chat interface, with a focus on serving remote communities with limited connectivity. The system features a React frontend with Node.js/Express backend, PostgreSQL database with Drizzle ORM, and DeepSeek AI integration for intelligent order processing. The app features the official Dropr logo in a circular design and follows the "Get Your Goods!" tagline.
 
 # User Preferences
 

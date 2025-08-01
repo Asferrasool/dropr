@@ -32,8 +32,10 @@ export default function Home() {
       <header className="gradient-purple text-white p-4 sticky top-0 z-40">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <Truck className="text-yellow-accent text-xl" />
-            <h1 className="text-xl font-bold">DeliverPak</h1>
+            <div className="w-8 h-8 rounded-full overflow-hidden bg-white flex items-center justify-center">
+              <img src="/dropr-logo.jpg" alt="Dropr Logo" className="w-full h-full object-cover" />
+            </div>
+            <h1 className="text-xl font-bold">Dropr</h1>
           </div>
           <div className="flex items-center space-x-3">
             <Button variant="ghost" size="sm" className="relative text-white hover:bg-white/20">

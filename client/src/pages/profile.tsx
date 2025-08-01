@@ -122,8 +122,8 @@ export default function Profile() {
 
         {/* App Info */}
         <div className="mt-8 text-center text-gray-500">
-          <p className="text-sm">DeliverPak v1.0.0</p>
-          <p className="text-xs mt-1">Serving rural Pakistan with ❤️</p>
+          <p className="text-sm">Dropr v1.0.0</p>
+          <p className="text-xs mt-1">Get Your Goods! Serving rural Pakistan with ❤️</p>
         </div>
       </div>
 
