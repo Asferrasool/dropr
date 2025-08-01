@@ -2,16 +2,51 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Truck, Bell, User, MapPin, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLocation } from "wouter";
 import AIChatModal from "../components/ai-chat-modal";
 import BottomNavigation from "../components/bottom-navigation";
 import CategoryGrid from "../components/category-grid";
 import ActiveOrders from "../components/active-orders";
 import PopularItems from "../components/popular-items";
 import NetworkStatus from "../components/network-status";
+import NotificationsModal from "../components/notifications-modal";
 
 export default function Home() {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState("Chak 123, Punjab");
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [, navigate] = useLocation();
+
+  // Dummy notifications data
+  const notifications: Array<{
+    id: number;
+    title: string;
+    message: string;
+    time: string;
+    type: "success" | "offer" | "info";
+  }> = [
+    {
+      id: 1,
+      title: "Order Delivered!",
+      message: "Your Chicken Biryani order has been delivered successfully",
+      time: "2 minutes ago",
+      type: "success"
+    },
+    {
+      id: 2,
+      title: "New Offer Available",
+      message: "Get 20% off on all medicine orders above Rs. 500",
+      time: "1 hour ago",
+      type: "offer"
+    },
+    {
+      id: 3,
+      title: "Order Confirmed",
+      message: "Your grocery order #DR123 is being prepared",
+      time: "3 hours ago",
+      type: "info"
+    }
+  ];
 
   const { data: categories = [] } = useQuery<any[]>({
     queryKey: ["/api/categories"],
@@ -38,13 +73,23 @@ export default function Home() {
             <h1 className="text-xl font-bold">Dropr</h1>
           </div>
           <div className="flex items-center space-x-3">
-            <Button variant="ghost" size="sm" className="relative text-white hover:bg-white/20">
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="relative text-white hover:bg-white/20"
+              onClick={() => setShowNotifications(true)}
+            >
               <Bell className="h-5 w-5" />
               <span className="absolute -top-1 -right-1 bg-yellow-accent text-purple-primary text-xs rounded-full w-4 h-4 flex items-center justify-center font-bold">
-                3
+                {notifications.length}
               </span>
             </Button>
-            <Button variant="ghost" size="sm" className="w-8 h-8 bg-yellow-accent rounded-full text-purple-primary hover:bg-yellow-accent/90">
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="w-8 h-8 bg-yellow-accent rounded-full text-purple-primary hover:bg-yellow-accent/90"
+              onClick={() => navigate('/profile')}
+            >
               <User className="h-4 w-4" />
             </Button>
           </div>
@@ -101,6 +146,13 @@ export default function Home() {
       <AIChatModal 
         isOpen={isChatOpen} 
         onClose={() => setIsChatOpen(false)} 
+      />
+
+      {/* Notifications Modal */}
+      <NotificationsModal 
+        isOpen={showNotifications}
+        onClose={() => setShowNotifications(false)}
+        notifications={notifications}
       />
 
       {/* Network Status */}
