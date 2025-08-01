@@ -22,7 +22,7 @@ export interface AIOrderResponse {
 export async function processAIMessage(userMessage: string, userId: string): Promise<AIOrderResponse> {
   try {
     const response = await openai.chat.completions.create({
-      model: "deepseek/deepseek-chat",
+      model: "deepseek/deepseek-r1:free",
       messages: [
         {
           role: "system",
@@ -83,7 +83,7 @@ Respond with JSON in this exact format:
 export async function generateOrderSummary(items: any[]): Promise<string> {
   try {
     const response = await openai.chat.completions.create({
-      model: "deepseek/deepseek-chat",
+      model: "deepseek/deepseek-r1:free",
       messages: [
         {
           role: "system",
